@@ -10,6 +10,6 @@ public class PlayerMovement : MonoBehaviour{
     }
 
     void Move(float xAxis, float yAxis){
-        transform.Translate(new Vector2(xAxis, yAxis) * speed * Time.deltaTime);
+        transform.Translate(new Vector2(xAxis, yAxis).normalized * speed * Time.deltaTime);
     }
 }

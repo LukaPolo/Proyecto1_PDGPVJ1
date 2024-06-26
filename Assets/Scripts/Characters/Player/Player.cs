@@ -4,18 +4,27 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 
-public class Player : Character
-{
-    public Vector3 posicionInicial;
-    public int attempts = 3;
+public class Player : Character{
+    private Vector3 playerSpawner;
 
-    private void Start()
-    {
-        posicionInicial = transform.position;
-    }
-    public override void TakeDamage(int amount)
-    {
-        base.TakeDamage(amount);
+    private void Start(){
+        playerSpawner = GameObject.FindGameObjectWithTag("PlayerSpawner").transform.position;
+        transform.position = playerSpawner;
+        GetComponent<Collider2D>().enabled = true;
+        chara.IsAlive = true;
     }
 
+    public override void CheckHealth(){
+        if(chara.Health <= 0){
+            Debug.Log("has muerto");
+            chara.Lifes -= 1;
+            transform.position = playerSpawner;
+            chara.Health = 100;
+        }
+        if(chara.Lifes <= 0){
+            GetComponent<Collider2D>().enabled = false;
+            chara.IsAlive = false;
+            Debug.Log("GAME OVER");
+        }
+    }
 }

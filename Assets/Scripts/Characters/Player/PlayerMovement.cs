@@ -3,13 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour{
-    [SerializeField]private float speed = 5;
+    [SerializeField]private CharacterData player;
+    [SerializeField]private Rigidbody2D rb2d;
+    private Vector2 moveInput;
 
     void Start(){
-        PlayerInput.directionalInput += Move;
+        PlayerInput.direction += Move;
     }
 
     void Move(float xAxis, float yAxis){
-        transform.Translate(new Vector2(xAxis, yAxis).normalized * speed * Time.deltaTime);
+        moveInput.x = xAxis;
+        moveInput.y = yAxis;
+        moveInput.Normalize();
+        rb2d.velocity = moveInput * player.MoveSpeed;
+        if(rb2d.velocity.x != 0 || rb2d.velocity.y != 0){
+            player.IsWalking = true;
+            player.IsWaiting = false;
+        }else{
+            player.IsWalking = false;
+            player.IsWaiting = true;
+        }
+        if(xAxis < 0){
+            player.IsTurning = true;
+        }
+        if(xAxis > 0){
+            player.IsTurning = false;
+        }
     }
 }

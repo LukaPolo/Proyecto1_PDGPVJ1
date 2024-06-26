@@ -15,6 +15,7 @@ public class PlayerAnimation : MonoBehaviour{
     public void Attack()
     {
         anim.SetBool("isAttacking", player.IsAttacking);
+        anim.SetBool("isAttackOnCooldown", player.IsAttackOnCooldown);
         anim.SetBool("isOnFire", player.IsOnFire);
         anim.SetInteger("idWeapon", player.Weapon );
     }

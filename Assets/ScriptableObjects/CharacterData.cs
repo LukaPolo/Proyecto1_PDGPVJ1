@@ -24,6 +24,7 @@ public class CharacterData : ScriptableObject{
     [SerializeField]private bool isDashing;
     [SerializeField]private bool isDashOnCooldown;
     [SerializeField]private bool isAttacking;
+    [SerializeField]private bool isAttackOnCooldown;
     [SerializeField]private bool isProtecting;
 
     void OnEnable(){
@@ -59,5 +60,6 @@ public class CharacterData : ScriptableObject{
     public bool IsDashing {get {return isDashing;} set {isDashing = value;}}
     public bool IsDashOnCooldown { get { return isDashOnCooldown; } set { isDashOnCooldown = value; } }
     public bool IsAttacking {get {return isAttacking;} set {isAttacking = value;}}
+    public bool IsAttackOnCooldown { get { return isAttackOnCooldown; } set { isAttackOnCooldown = value; } }
     public bool IsProtecting {get {return isProtecting;} set {isProtecting = value;}}
 }

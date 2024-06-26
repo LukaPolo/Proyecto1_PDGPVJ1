@@ -21,7 +21,9 @@ public class PlayerDash : MonoBehaviour{
     IEnumerator Cooldown(){
         yield return new WaitForSeconds(player.DashLength);
         player.MoveSpeed = player.NormalSpeed;
+        player.IsDashOnCooldown = true;
         yield return new WaitForSeconds(player.DashCooldown);
         player.IsDashing = false;
+        player.IsDashOnCooldown = false;
     }
 }

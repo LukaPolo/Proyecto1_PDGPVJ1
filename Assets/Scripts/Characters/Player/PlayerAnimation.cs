@@ -9,6 +9,20 @@ public class PlayerAnimation : MonoBehaviour{
 
     void Update(){
         sprite.flipX = player.IsTurning;
-        anim.SetBool("Walk", player.IsWalking);
+        Movement();
+        Attack();
+    }
+    public void Attack()
+    {
+        anim.SetBool("isAttacking", player.IsAttacking);
+        anim.SetBool("isOnFire", player.IsOnFire);
+        anim.SetInteger("idWeapon", player.Weapon );
+    }
+    public void Movement()
+    {
+        anim.SetBool("isWaiting", player.IsWaiting);
+        anim.SetBool("isWalking", player.IsWalking);
+        anim.SetBool("isDashing", player.IsDashing);
+        anim.SetBool("isDashOnCooldown", player.IsDashOnCooldown);
     }
 }

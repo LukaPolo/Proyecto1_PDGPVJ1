@@ -22,6 +22,7 @@ public class CharacterData : ScriptableObject{
     [SerializeField]private bool isWalking;
     [SerializeField]private bool isTurning;
     [SerializeField]private bool isDashing;
+    [SerializeField]private bool isDashOnCooldown;
     [SerializeField]private bool isAttacking;
     [SerializeField]private bool isProtecting;
 
@@ -56,6 +57,7 @@ public class CharacterData : ScriptableObject{
     public bool IsWalking {get {return isWalking;} set {isWalking = value;}}
     public bool IsTurning {get {return isTurning;} set {isTurning = value;}}
     public bool IsDashing {get {return isDashing;} set {isDashing = value;}}
+    public bool IsDashOnCooldown { get { return isDashOnCooldown; } set { isDashOnCooldown = value; } }
     public bool IsAttacking {get {return isAttacking;} set {isAttacking = value;}}
     public bool IsProtecting {get {return isProtecting;} set {isProtecting = value;}}
 }

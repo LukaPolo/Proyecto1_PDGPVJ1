@@ -27,13 +27,17 @@ public class PlayerAttack : MonoBehaviour{
         while(attackProgress < 1){
             attackProgress += player.WeaponList[player.Weapon].AttackSpeed * Time.deltaTime;
             hitbox.rotation = Quaternion.Slerp(start.rotation, finish.rotation, attackProgress);
+            
             yield return null;
         }
         yield return new WaitForSeconds(player.WeaponList[player.Weapon].AttackDuration);
         activeHitbox.SetActive(false);
         hitbox.rotation = start.rotation;
+        player.IsAttackOnCooldown = true;
+
         yield return new WaitForSeconds(player.WeaponList[player.Weapon].AttackCooldown);
         attackProgress = 0f;
         player.IsAttacking = false;
+        player.IsAttackOnCooldown = false;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimation : MonoBehaviour{
+public class EnemyAnimation : MonoBehaviour{
     [SerializeField]private CharacterData player;
     [SerializeField]private SpriteRenderer sprite;
     [SerializeField]private Animator anim;

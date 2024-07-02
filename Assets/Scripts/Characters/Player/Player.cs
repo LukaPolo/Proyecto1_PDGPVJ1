@@ -8,7 +8,7 @@ public class Player : Character{
     private Vector3 playerSpawner;
 
     private void Start(){
-        //playerSpawner = GameObject.FindGameObjectWithTag("PlayerSpawner").transform.position;
+        playerSpawner = GameObject.FindGameObjectWithTag("PlayerSpawner").transform.position;
         transform.position = playerSpawner;
         GetComponent<Collider2D>().enabled = true;
         chara.IsAlive = true;

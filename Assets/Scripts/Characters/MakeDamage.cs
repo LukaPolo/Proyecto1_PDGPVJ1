@@ -11,4 +11,4 @@ public class MakeDamage : MonoBehaviour{
             Debug.Log("hiciste " + chara.WeaponList[chara.Weapon].AttackDamage + " de danyo");
         }
     }
-}
+}   

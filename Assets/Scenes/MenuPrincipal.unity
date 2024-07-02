@@ -1145,7 +1145,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596001765}
   m_CullTransparentMesh: 1
---- !u!1 &1599413710
+--- !u!1 &1628396764
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1153,30 +1153,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1599413712}
-  - component: {fileID: 1599413711}
+  - component: {fileID: 1628396766}
+  - component: {fileID: 1628396765}
   m_Layer: 0
-  m_Name: Cursed_Fate_1
+  m_Name: Cursed Fate Main Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &1599413711
+--- !u!82 &1628396765
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599413710}
+  m_GameObject: {fileID: 1628396764}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 1b8bda80413da2543ba0006dddbd6977, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 87f6dd73ce6ee7c4aa75dd455d19cb9c, type: 3}
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 67a2479575f49ec4fa577e9e15d8b4fc, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1258,13 +1258,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &1599413712
+--- !u!4 &1628396766
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599413710}
+  m_GameObject: {fileID: 1628396764}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -4720,4 +4720,4 @@ SceneRoots:
   - {fileID: 374768003}
   - {fileID: 1986674771}
   - {fileID: 1774834942}
-  - {fileID: 1599413712}
+  - {fileID: 1628396766}

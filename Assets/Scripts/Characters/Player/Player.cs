@@ -14,17 +14,22 @@ public class Player : Character{
         chara.IsAlive = true;
     }
 
+    void Update(){
+        chara.IsWaiting = !(!chara.IsAlive || chara.IsWalking || chara.IsAttacking || chara.IsDashing || chara.IsProtecting);
+    }
+
     public override void CheckHealth(){
         if(chara.Health <= 0){
-            Debug.Log("has muerto");
             chara.Lifes -= 1;
-            transform.position = playerSpawner;
-            chara.Health = 100;
-        }
-        if(chara.Lifes <= 0){
-            GetComponent<Collider2D>().enabled = false;
-            chara.IsAlive = false;
-            Debug.Log("GAME OVER");
+            if(chara.Lifes > 0){
+                transform.position = playerSpawner;
+                chara.Health = chara.MaxHealth;
+                Debug.Log("has muerto");
+            }else{
+                GetComponent<Collider2D>().enabled = false;
+                chara.IsAlive = false;
+                Debug.Log("GAME OVER");
+            }
         }
     }
 }

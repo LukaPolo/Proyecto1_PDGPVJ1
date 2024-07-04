@@ -18,10 +18,8 @@ public class PlayerMovement : MonoBehaviour{
         rb2d.velocity = moveInput * player.MoveSpeed;
         if(rb2d.velocity.x != 0 || rb2d.velocity.y != 0){
             player.IsWalking = true;
-            player.IsWaiting = false;
         }else{
             player.IsWalking = false;
-            player.IsWaiting = true;
         }
         if(xAxis < 0){
             player.IsTurning = true;

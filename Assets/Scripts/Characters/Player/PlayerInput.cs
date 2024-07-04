@@ -7,20 +7,22 @@ public class PlayerInput : MonoBehaviour{
     public delegate void DirectionalInput(float xAxis, float yAxis);
     public delegate void DashInput();
     public delegate void AttackInput();
-    public delegate void ProtectInput(bool button);
+    public delegate void ProtectInput();
+    public delegate void ProtectReleaseInput();
     public delegate void InteractInput();
     public static DirectionalInput direction;
     public static DashInput dash;
     public static AttackInput attack;
     public static ProtectInput protect;
+    public static ProtectReleaseInput protectRelease;
     public static InteractInput interact;
 
     void Update(){
         if(player.IsAlive){
             direction(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            protect(Input.GetButton("Protect"));
             if(Input.GetButton("Dash")) dash();
             if(Input.GetButton("Attack")) attack();
+            if(Input.GetButton("Protect")) {protect();} else {protectRelease();}
             //if(Input.GetButton("Interact")) interact();
         }
     }

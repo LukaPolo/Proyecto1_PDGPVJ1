@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 20
   attackSpeed: 4
-  attackDuration: 0.2
+  attackDuration: 0.1
   attackCooldown: 0.3
   isOnFire: 0
   hitbox: {fileID: 2100461236291508565, guid: 5755ec54f25e2a344aaa95eca214fd09, type: 3}

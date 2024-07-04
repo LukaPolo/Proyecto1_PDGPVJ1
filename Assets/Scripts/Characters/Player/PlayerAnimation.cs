@@ -3,29 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterAnimation : MonoBehaviour{
-    [SerializeField]private CharacterData player;
-    [SerializeField]private SpriteRenderer sprite;
+    [SerializeField]private CharacterData chara;
     [SerializeField]private Animator anim;
 
     void Update(){
-        if(!player.IsAttacking){
-            sprite.flipX = player.IsTurning;
-        }
         Movement();
         Attack();
     }
 
     public void Attack(){
-        anim.SetBool("isAttacking", player.IsAttacking);
-        anim.SetBool("isAttackOnCooldown", player.IsAttackOnCooldown);
-        anim.SetBool("isOnFire", player.IsOnFire);
-        anim.SetInteger("idWeapon", player.Weapon);
+        anim.SetInteger("idWeapon", chara.Weapon);
+        anim.SetBool("isAttacking", chara.IsAttacking);
+        anim.SetBool("isAttackOnCooldown", chara.IsAttackOnCooldown);
+        anim.SetBool("isOnFire", chara.IsOnFire);
     }
 
     public void Movement(){
-        anim.SetBool("isWaiting", player.IsWaiting);
-        anim.SetBool("isWalking", player.IsWalking);
-        anim.SetBool("isDashing", player.IsDashing);
-        anim.SetBool("isDashOnCooldown", player.IsDashOnCooldown);
+        anim.SetBool("isWaiting", chara.IsWaiting);
+        anim.SetBool("isWalking", chara.IsWalking);
+        anim.SetBool("isDashing", chara.IsDashing);
+        anim.SetBool("isDashOnCooldown", chara.IsDashOnCooldown);
     }
 }

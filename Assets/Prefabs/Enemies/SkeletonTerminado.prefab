@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chara: {fileID: 11400000, guid: f010ae3311b483e43975aea54f3d76e5, type: 2}
-  visualHealth: {fileID: 5475738362428007418}
+  healthBar: {fileID: 5475738362428007418}
   enemyData: {fileID: 11400000, guid: 50c19ec891c68a2429322e0b54aa7166, type: 2}
 --- !u!114 &252994666223481159
 MonoBehaviour:
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafd5ae6c27f3f7479e1f4dd76f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chara: {fileID: 11400000, guid: f010ae3311b483e43975aea54f3d76e5, type: 2}
+  weapon: {fileID: 11400000, guid: caf00004d8e6cce4bb13746f452e6e37, type: 2}
 --- !u!1001 &277018541907006785
 PrefabInstance:
   m_ObjectHideFlags: 0

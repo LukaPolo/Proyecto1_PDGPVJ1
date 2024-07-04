@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 using static UnityEngine.GraphicsBuffer;
 
 public class EnemyBehaviour : MonoBehaviour
@@ -37,6 +38,7 @@ public class EnemyBehaviour : MonoBehaviour
     void ManejarMovimientoNormal()
     {
         enemy.IsAttacking = false;
+        
 
         if (enemy.IsWalking)
         {
@@ -50,7 +52,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else if (enemy.IsTurning)
         {
-            CambiarDireccion();
+            //CambiarDireccion();
         }
     }
 
@@ -72,20 +74,42 @@ public class EnemyBehaviour : MonoBehaviour
     void PerseguirJugador()
     {
         enemy.IsAttacking = false;
-        if (transform.position.x < jugador.transform.position.x)
+        
+        if (jugador.transform.rotation.y == 0)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            Vector2 direccion = (jugador.position - transform.position).normalized;
-            rb.velocity = direccion * enemy.NormalSpeed;
-            enemy.IsWalking = true;
+            if (transform.position.x > jugador.transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                Vector2 direccion = (jugador.position - transform.position).normalized;
+                rb.velocity = direccion * enemy.NormalSpeed;
+                enemy.IsWalking = true;
+            }
+            else if (transform.position.x < jugador.transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                Vector2 direccion = (jugador.position - transform.position).normalized;
+                rb.velocity = direccion * enemy.NormalSpeed;
+                enemy.IsWalking = true;
+            }
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            Vector2 direccion = (jugador.position - transform.position).normalized;
-            rb.velocity = direccion * enemy.NormalSpeed;
-            enemy.IsWalking = true;
-        }
+            if (transform.position.x < jugador.transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                Vector2 direccion = (jugador.position - transform.position).normalized;
+                rb.velocity = direccion * enemy.NormalSpeed;
+                enemy.IsWalking = true;
+            }
+            else if (transform.position.x > jugador.transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                Vector2 direccion = (jugador.position - transform.position).normalized;
+                rb.velocity = direccion * enemy.NormalSpeed;
+                enemy.IsWalking = true;
+            }
+        }    
+        
 
 
     }

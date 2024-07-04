@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: 09282c9ce1ff47548a5ea099b2f7150a, type: 3}
       propertyPath: m_Name
-      value: Jefe1Terminado
+      value: DemonTerminado
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: 09282c9ce1ff47548a5ea099b2f7150a, type: 3}
       propertyPath: m_Layer
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafd5ae6c27f3f7479e1f4dd76f5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chara: {fileID: 11400000, guid: 8ccc898c849a4c445b1fb5db07261e8a, type: 2}
+  weapon: {fileID: 11400000, guid: 8e97f512daba90c41902861b6e9c49b4, type: 2}
 --- !u!114 &5071898718097403976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chara: {fileID: 11400000, guid: 8ccc898c849a4c445b1fb5db07261e8a, type: 2}
-  visualHealth: {fileID: 2212522016774660964}
+  healthBar: {fileID: 2212522016774660964}
   enemyData: {fileID: 11400000, guid: b1e048e5a4a3f5848a5b814c3ef7fde7, type: 2}
 --- !u!114 &1626438555576996741
 MonoBehaviour:

@@ -24,6 +24,7 @@ public class Player : Character{
         if(chara.Lifes <= 0){
             GetComponent<Collider2D>().enabled = false;
             chara.IsAlive = false;
+            Destroy(gameObject);
             Debug.Log("GAME OVER");
         }
     }

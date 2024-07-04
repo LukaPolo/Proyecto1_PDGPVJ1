@@ -10,30 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ca0ab21afcc1b4b80562f7a374ec16, type: 3}
-  m_Name: Enemy Data 1
+  m_Name: DemonData
   m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 100
-  lifes: 3
-  maxLifes: 3
+  health: 150
+  maxHealth: 150
+  lifes: 1
+  maxLifes: 1
   weapon: 0
   weaponList:
-  - {fileID: 11400000, guid: a2dd7457ba0afff428656928f7545880, type: 2}
-  - {fileID: 11400000, guid: 650d42872c5fc534ea7b9fd6fd2a435d, type: 2}
-  - {fileID: 11400000, guid: df2d6c4c2e8035743831ce4b8605ba47, type: 2}
+  - {fileID: 11400000, guid: 8e97f512daba90c41902861b6e9c49b4, type: 2}
   moveSpeed: 5
   normalSpeed: 5
   runSpeed: 4
   dashSpeed: 10
   dashLength: 0.5
   dashCooldown: 0.6
-  isAlive: 0
+  isAlive: 1
   isOnFire: 0
   isWaiting: 1
   isWalking: 0
   isTurning: 0
   isDashing: 0
   isDashOnCooldown: 0
-  isAttacking: 1
+  isAttacking: 0
   isAttackOnCooldown: 0
   isProtecting: 0

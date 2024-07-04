@@ -1199,9 +1199,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4275805973186509682}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 250
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 150
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1635,7 +1635,6 @@ MonoBehaviour:
   player: {fileID: 11400000, guid: 15b8dfbd1dd209f40a37a838b8b3516d, type: 2}
   hitboxField: {fileID: 2635069305315098784}
   hitbox: {fileID: 0}
-  hitboxRotation: 0
   start: 0
   finish: 0
   attackProgress: 0
@@ -1753,7 +1752,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 15b8dfbd1dd209f40a37a838b8b3516d, type: 2}
-  rb2d: {fileID: 8417589394952950831}
 --- !u!1 &8353898008392297541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,7 +1811,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chara: {fileID: 11400000, guid: 15b8dfbd1dd209f40a37a838b8b3516d, type: 2}
-  sprite: {fileID: 6260260429735431640}
   anim: {fileID: 8933913274393813177}
 --- !u!114 &8417589394952950833
 MonoBehaviour:
@@ -1828,7 +1825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chara: {fileID: 11400000, guid: 15b8dfbd1dd209f40a37a838b8b3516d, type: 2}
-  visualHealth: {fileID: 4275805972926308291}
+  healthBar: {fileID: 4275805972926308291}
 --- !u!61 &8417589394952950834
 BoxCollider2D:
   m_ObjectHideFlags: 0

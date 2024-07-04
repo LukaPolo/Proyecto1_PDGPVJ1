@@ -7,16 +7,17 @@ public class PlayerProtect : MonoBehaviour{
     [SerializeField]private GameObject shield;
 
     void Start(){
-        PlayerInput.protect += Protect;
+        PlayerInput.protect += EnableShield;
+        PlayerInput.protectRelease += DisableShield;
     }
 
-    void Protect(bool button){
-        if(button){
-            player.IsProtecting = true;
-            shield.SetActive(true);
-        }else{
-            player.IsProtecting = false;
-            shield.SetActive(false);
-        }
+    void EnableShield(){
+        player.IsProtecting = true;
+        shield.SetActive(true);
+    }
+
+    void DisableShield(){
+        player.IsProtecting = false;
+        shield.SetActive(false);
     }
 }

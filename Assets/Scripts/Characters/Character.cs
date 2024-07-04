@@ -6,14 +6,23 @@ using UnityEngine.SceneManagement;
 
 public abstract class Character : MonoBehaviour{
     [SerializeField]public CharacterData chara;
-    [SerializeField]public Slider visualHealth;
+    [SerializeField]public Slider healthBar;
 
     private void Awake(){
         chara.Health = chara.MaxHealth;
+        healthBar.maxValue = chara.MaxHealth;
     }
 
     void Update(){
-        visualHealth.GetComponent<Slider>().value = chara.Health;
+        healthBar.value = chara.Health;
+        chara.IsWaiting = !(!chara.IsAlive || chara.IsWalking || chara.IsAttacking || chara.IsDashing || chara.IsProtecting);
+        if(!chara.IsAttacking){
+            if(chara.IsTurning){
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }else{
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
+        }
     }
 
     public abstract void CheckHealth();

@@ -14,17 +14,6 @@ public class Player : Character{
         chara.IsAlive = true;
     }
 
-    void Update(){
-        chara.IsWaiting = !(!chara.IsAlive || chara.IsWalking || chara.IsAttacking || chara.IsDashing || chara.IsProtecting);
-        if(!chara.IsAttacking){
-            if(chara.IsTurning){
-                transform.localRotation = Quaternion.Euler(0, 180, 0);
-            }else{
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-            }
-        }
-    }
-
     public override void CheckHealth(){
         if(chara.Health <= 0){
             chara.Lifes -= 1;

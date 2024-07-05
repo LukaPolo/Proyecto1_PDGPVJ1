@@ -2,21 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy6Behaviour : MonoBehaviour
+public class SeekerBehaviour : MonoBehaviour
 {
     [Header("Parámetros de Movimiento")]
     public float velMovimiento;
-    public float tiempoReaccion = 0.8f;
     public float velocidad = 3f;
-    public float rangoAlerta;
-
-    [Header("Estados de Movimiento")]
-    public bool espera, camina, gira, estarAlerta;
-
     [Header("Otros Parámetros")]
     public Transform jugador;
     public LayerMask capaJugador;
     [SerializeField] private CharacterData enemy;
+    [SerializeField] private EnemyData enemyData;
     private int movimiento;
     private Animator animator;
     private Rigidbody2D rb;
@@ -28,14 +23,14 @@ public class Enemy6Behaviour : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        Accion();
+        //Accion();
     }
 
     void Update()
     {
-        estarAlerta = Physics2D.OverlapCircle(transform.position, rangoAlerta, capaJugador);
+        enemyData.IsAlert = Physics2D.OverlapCircle(transform.position, enemyData.DetectionRange, capaJugador);
 
-        if (!estarAlerta)
+        if (!enemyData.IsAlert)
         {
             ManejarMovimientoNormal();
         }
@@ -48,13 +43,14 @@ public class Enemy6Behaviour : MonoBehaviour
     void ManejarMovimientoNormal()
     {
         enemy.IsAttacking = false;
+        enemy.IsWalking = false;
 
-        if (espera)
+        if (enemy.IsWaiting)
         {
             rb.velocity = Vector2.zero;
             enemy.IsWalking = false;
         }
-        else if (gira)
+        else if (enemy.IsTurning)
         {
             CambiarDireccion();
         }
@@ -64,7 +60,7 @@ public class Enemy6Behaviour : MonoBehaviour
     {
         if (tiempoEspera)
         {
-            animator.SetBool("spawn", true);
+            enemyData.IsSpawning = true;
             enemy.IsWaiting = true;
             StartCoroutine(TiempoEspera());
             
@@ -89,37 +85,36 @@ public class Enemy6Behaviour : MonoBehaviour
     }
     IEnumerator TiempoEspera()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(enemyData.WaitTime);
         tiempoEspera = false;
+        enemyData.IsSpawning = false;
     }
     void PerseguirJugador()
     {
         enemy.IsAttacking = false;
+        enemy.IsWaiting = false;
         if (transform.position.x < jugador.transform.position.x)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            enemy.IsTurning = false;
             Vector2 direccion = (jugador.position - transform.position).normalized;
-            rb.velocity = direccion * velocidad;
+            rb.velocity = direccion * enemy.RunSpeed;
             enemy.IsWalking = true;
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            enemy.IsTurning = true;
             Vector2 direccion = (jugador.position - transform.position).normalized;
-            rb.velocity = direccion * velocidad;
+            rb.velocity = direccion * enemy.RunSpeed;
             enemy.IsWalking = true;
         }
-
-
     }
 
     void AtacarJugador()
     {
         rb.velocity = Vector2.zero;
         enemy.IsWalking = false;
+        enemy.IsWaiting = false;
         enemy.IsAttacking = true;
-        //animator.SetBool("walk", false);
-        //animator.SetBool("attack", true);
     }
     void CambiarDireccion()
     {
@@ -128,29 +123,8 @@ public class Enemy6Behaviour : MonoBehaviour
         rb.velocity = direccionMovimiento * velMovimiento;
     }
 
-    void Accion()
-    {
-        movimiento = Random.Range(1, 2);
-        //camina = movimiento == 1;
-        espera = movimiento == 1;
-        gira = movimiento == 2;
-
-        if (gira)
-        {
-            StartCoroutine(TiempoGiro());
-        }
-
-        Invoke("Accion", tiempoReaccion);
-    }
-
-    IEnumerator TiempoGiro()
-    {
-        yield return new WaitForSeconds(2);
-        gira = false;
-    }
-
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, rangoAlerta);
+        Gizmos.DrawWireSphere(transform.position, enemyData.DetectionRange);
     }
 }

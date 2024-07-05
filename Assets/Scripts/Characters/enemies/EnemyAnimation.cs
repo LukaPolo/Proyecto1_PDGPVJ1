@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimation : MonoBehaviour{
+public class EnemyAnimation : MonoBehaviour{
     [SerializeField]private CharacterData enemy;
+    [SerializeField] private EnemyData enemyData;
     [SerializeField]private SpriteRenderer sprite;
     [SerializeField]private Animator anim;
 
@@ -22,6 +23,7 @@ public class PlayerAnimation : MonoBehaviour{
     public void Movement()
     {
         anim.SetBool("isAlive", enemy.IsAlive);
+        anim.SetBool("isSpawning", enemyData.IsSpawning);
         anim.SetBool("isWaiting", enemy.IsWaiting);
         anim.SetBool("isWalking", enemy.IsWalking);
         anim.SetBool("isDashing", enemy.IsDashing);

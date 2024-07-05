@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ca0ab21afcc1b4b80562f7a374ec16, type: 3}
-  m_Name: Enemy Data 1
+  m_Name: SeekerData
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
   maxHealth: 100
   lifes: 3
   maxLifes: 3
@@ -27,13 +27,13 @@ MonoBehaviour:
   dashSpeed: 10
   dashLength: 0.5
   dashCooldown: 0.6
-  isAlive: 0
+  isAlive: 1
   isOnFire: 0
   isWaiting: 1
   isWalking: 0
   isTurning: 0
   isDashing: 0
   isDashOnCooldown: 0
-  isAttacking: 1
+  isAttacking: 0
   isAttackOnCooldown: 0
   isProtecting: 0

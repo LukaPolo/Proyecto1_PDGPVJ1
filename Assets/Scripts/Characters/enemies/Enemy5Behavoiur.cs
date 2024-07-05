@@ -17,9 +17,7 @@ public class Enemy5Behavoiur : MonoBehaviour
     [Header("Otros Parámetros")]
     public Transform jugador;
     public LayerMask capaJugador;
-    public int Dano = 10;
-    public int vida = 100;
-
+    [SerializeField] private CharacterData enemy;
     private int movimiento;
     private Animator animator;
     private Rigidbody2D rb;
@@ -49,17 +47,17 @@ public class Enemy5Behavoiur : MonoBehaviour
 
     void ManejarMovimientoNormal()
     {
-        animator.SetBool("attack", false);
+        enemy.IsAttacking = false;
 
         if (camina)
         {
             rb.velocity = direccionMovimiento * velMovimiento;
-            animator.SetBool("walk", true);
+            enemy.IsWalking = true;
         }
         else if (espera)
         {
             rb.velocity = Vector2.zero;
-            animator.SetBool("walk", false);
+            enemy.IsWalking = false;
         }
         else if (gira)
         {
@@ -72,7 +70,7 @@ public class Enemy5Behavoiur : MonoBehaviour
         float distanciaAlJugador = Vector2.Distance(transform.position, jugador.position);
         
 
-        if (distanciaAlJugador > 4f)
+        if (distanciaAlJugador > 8f)
         {
             PerseguirJugador();
         }
@@ -84,30 +82,29 @@ public class Enemy5Behavoiur : MonoBehaviour
 
     void PerseguirJugador()
     {
-        animator.SetBool("attack", false);
+        enemy.IsAttacking = false;
+        enemy.IsWaiting = false;
         if (transform.position.x < jugador.transform.position.x)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            enemy.IsTurning = true;
             Vector2 direccion = (jugador.position - transform.position).normalized;
-            rb.velocity = direccion * velocidad;
-            animator.SetBool("walk", true);
+            rb.velocity = direccion * enemy.RunSpeed;
+            enemy.IsWalking = true;
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            enemy.IsTurning = false;
             Vector2 direccion = (jugador.position - transform.position).normalized;
-            rb.velocity = direccion * velocidad;
-            animator.SetBool("walk", true);
+            rb.velocity = direccion * enemy.RunSpeed;
+            enemy.IsWalking = true;
         }
-
-
     }
 
     void AtacarJugador()
     {
         rb.velocity = Vector2.zero;
-        animator.SetBool("walk", false);
-        animator.SetBool("attack", true);
+        enemy.IsWalking = false;
+        enemy.IsAttacking = true;
     }
     void CambiarDireccion()
     {
@@ -117,7 +114,7 @@ public class Enemy5Behavoiur : MonoBehaviour
     }
     public void FinalAnimacion()
     {
-        animator.SetBool("attack", false);
+        enemy.IsAttacking = false;
     }
 
     void Accion()
@@ -141,37 +138,14 @@ public class Enemy5Behavoiur : MonoBehaviour
         yield return new WaitForSeconds(2);
         gira = false;
     }
-
-    public void TomarDano()
-    {
-        //animator.SetBool("hit", false);
-        vida -= 10;
-        if(vida <=0)
-        {
-            animator.SetBool("dead", true);
-            Destroy(gameObject, 2);
-        }
-    }
     public void Morir()
     {
-        animator.SetBool("attack", false);
-        animator.SetBool("walk", false);
-       
+        enemy.IsWalking = false;
+        enemy.IsAttacking = false;
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, rangoAlerta);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("player"))
-        {
-            // other.GetComponent<BarraVida>().RecibirDano(Dano);
-            Debug.Log("golpe");
-            //animator.SetBool("hit", true);
-            TomarDano();
-        }
     }
 }

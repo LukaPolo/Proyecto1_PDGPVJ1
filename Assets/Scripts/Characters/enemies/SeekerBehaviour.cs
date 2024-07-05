@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class SeekerBehaviour : MonoBehaviour
 {
-    [Header("Parámetros de Movimiento")]
+    [Header("Parï¿½metros de Movimiento")]
     public float velMovimiento;
     public float velocidad = 3f;
-    [Header("Otros Parámetros")]
+    [Header("Otros Parï¿½metros")]
     public Transform jugador;
     public LayerMask capaJugador;
     [SerializeField] private CharacterData enemy;
     [SerializeField] private EnemyData enemyData;
+    public AudioSource controlSonido;
+    public AudioClip attackSound;
     private int movimiento;
     private Animator animator;
     private Rigidbody2D rb;
@@ -115,10 +117,11 @@ public class SeekerBehaviour : MonoBehaviour
         enemy.IsWalking = false;
         enemy.IsWaiting = false;
         enemy.IsAttacking = true;
+        if(enemy.IsAttacking && !controlSonido.isPlaying) controlSonido.PlayOneShot(attackSound);
     }
     void CambiarDireccion()
     {
-        // Cambiar la dirección de movimiento a una dirección aleatoria
+        // Cambiar la direcciï¿½n de movimiento a una direcciï¿½n aleatoria
         direccionMovimiento = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         rb.velocity = direccionMovimiento * velMovimiento;
     }

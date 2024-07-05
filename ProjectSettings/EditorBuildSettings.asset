@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mapa Tres.unity
     guid: 3b2289e51d6ad6f498c0b9cd6d2b3855
+  - enabled: 1
+    path: Assets/Scenes/EscenaFinal.unity
+    guid: 76d8b6d4d5e4771469fe70e31cc91c0b
   m_configObjects: {}

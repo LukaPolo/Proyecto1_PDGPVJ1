@@ -20,6 +20,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         //Accion();
     }
 

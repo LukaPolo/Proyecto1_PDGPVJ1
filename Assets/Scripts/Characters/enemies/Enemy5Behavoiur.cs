@@ -30,6 +30,7 @@ public class Enemy5Behavoiur : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         Accion();
     }
 

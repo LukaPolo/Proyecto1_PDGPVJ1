@@ -25,6 +25,7 @@ public class SeekerBehaviour : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         //Accion();
     }
 

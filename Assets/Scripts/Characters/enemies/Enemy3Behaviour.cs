@@ -20,6 +20,7 @@ public class Enemy3Behaviour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         Accion();
+        jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     void Update()

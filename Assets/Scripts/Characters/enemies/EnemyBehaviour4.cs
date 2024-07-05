@@ -19,6 +19,7 @@ public class EnemyBehaviour4 : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         Accion();
     }
 

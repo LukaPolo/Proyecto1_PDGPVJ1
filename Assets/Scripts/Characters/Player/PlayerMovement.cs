@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour{
     [SerializeField]private CharacterData player;
     [SerializeField]private Rigidbody2D rb2d;
-    private Vector2 moveInput;
+    [SerializeField]private Vector2 moveInput;
 
     void Start(){
         PlayerInput.direction += Move;

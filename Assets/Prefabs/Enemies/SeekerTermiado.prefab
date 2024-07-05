@@ -83,7 +83,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -199,18 +199,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velMovimiento: 3
-  tiempoReaccion: 0.8
   velocidad: 3
-  rangoAlerta: 4
-  espera: 0
-  camina: 0
-  gira: 0
-  estarAlerta: 0
   jugador: {fileID: 0}
   capaJugador:
     serializedVersion: 2
     m_Bits: 8
   enemy: {fileID: 11400000, guid: ed1b77c603e86334e82582e8c3c623e5, type: 2}
+  enemyData: {fileID: 11400000, guid: 6b293819004fc614f9bcc7b361afc523, type: 2}
   tiempoEspera: 1
 --- !u!114 &6264847179062914857
 MonoBehaviour:
@@ -253,6 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: ed1b77c603e86334e82582e8c3c623e5, type: 2}
+  enemyData: {fileID: 11400000, guid: 6b293819004fc614f9bcc7b361afc523, type: 2}
   sprite: {fileID: 377137811629983565}
   anim: {fileID: 1142540642226661566}
 --- !u!61 &1447446073605020669

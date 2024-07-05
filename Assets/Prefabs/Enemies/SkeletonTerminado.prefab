@@ -83,7 +83,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: f010ae3311b483e43975aea54f3d76e5, type: 2}
+  enemyData: {fileID: 11400000, guid: 50c19ec891c68a2429322e0b54aa7166, type: 2}
   sprite: {fileID: 1427834141271832420}
   anim: {fileID: 4813005296946083277}
 --- !u!114 &3252737105654025771

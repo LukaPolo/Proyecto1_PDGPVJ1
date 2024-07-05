@@ -83,22 +83,21 @@ public class Enemy5Behavoiur : MonoBehaviour
     void PerseguirJugador()
     {
         enemy.IsAttacking = false;
+        enemy.IsWaiting = false;
         if (transform.position.x < jugador.transform.position.x)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            enemy.IsTurning = true;
             Vector2 direccion = (jugador.position - transform.position).normalized;
-            rb.velocity = direccion * velocidad;
+            rb.velocity = direccion * enemy.RunSpeed;
             enemy.IsWalking = true;
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            enemy.IsTurning = false;
             Vector2 direccion = (jugador.position - transform.position).normalized;
-            rb.velocity = direccion * velocidad;
+            rb.velocity = direccion * enemy.RunSpeed;
             enemy.IsWalking = true;
         }
-
-
     }
 
     void AtacarJugador()

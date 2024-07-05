@@ -189,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 15b8dfbd1dd209f40a37a838b8b3516d, type: 2}
   rb2d: {fileID: 6899515715937907271}
+  moveInput: {x: 0, y: 0}
 --- !u!114 &4872606404230029881
 MonoBehaviour:
   m_ObjectHideFlags: 0

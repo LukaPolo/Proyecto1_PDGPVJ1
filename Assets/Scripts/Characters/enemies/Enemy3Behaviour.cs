@@ -59,7 +59,7 @@ public class Enemy3Behaviour : MonoBehaviour
         float distanciaAlJugador = Vector2.Distance(transform.position, jugador.position);
 
 
-        if (distanciaAlJugador > 3f)
+        if (distanciaAlJugador > 4f)
         {
             PerseguirJugador();
         }
@@ -72,22 +72,21 @@ public class Enemy3Behaviour : MonoBehaviour
     void PerseguirJugador()
     {
         enemy.IsAttacking = false;
+        enemy.IsWaiting = false;
         if (transform.position.x < jugador.transform.position.x)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            enemy.IsTurning = false;
             Vector2 direccion = (jugador.position - transform.position).normalized;
-            rb.velocity = direccion * enemy.NormalSpeed;
+            rb.velocity = direccion * enemy.RunSpeed;
             enemy.IsWalking = true;
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            enemy.IsTurning = true;
             Vector2 direccion = (jugador.position - transform.position).normalized;
-            rb.velocity = direccion * enemy.NormalSpeed;
+            rb.velocity = direccion * enemy.RunSpeed;
             enemy.IsWalking = true;
         }
-
-
     }
 
     void AtacarJugador()

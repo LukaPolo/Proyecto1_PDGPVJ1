@@ -17,7 +17,7 @@ public class Enemy2Behaviour : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Accion();
+        //Accion();
     }
 
     void Update()
@@ -28,6 +28,7 @@ public class Enemy2Behaviour : MonoBehaviour
         {
             ManejarMovimientoNormal();
             enemy.IsWaiting = true;
+            enemy.IsWalking = false;
         }
         else
         {
@@ -71,20 +72,18 @@ public class Enemy2Behaviour : MonoBehaviour
         enemy.IsWaiting = false;
         if (transform.position.x < jugador.transform.position.x)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            enemy.IsTurning = false;
             Vector2 direccion = (jugador.position - transform.position).normalized;
             rb.velocity = direccion * enemy.RunSpeed;
             enemy.IsWalking = true;
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            enemy.IsTurning = true;
             Vector2 direccion = (jugador.position - transform.position).normalized;
             rb.velocity = direccion * enemy.RunSpeed;
             enemy.IsWalking = true;
         }
-
-
     }
 
     void AtacarJugador()
@@ -108,7 +107,7 @@ public class Enemy2Behaviour : MonoBehaviour
     {
         movimiento = Random.Range(1, 2);
 
-        //camina = movimiento == 1;
+        //enemy.IsWalking = movimiento == 1;
         enemy.IsWaiting = movimiento == 1;
         enemy.IsTurning = movimiento == 2;
 

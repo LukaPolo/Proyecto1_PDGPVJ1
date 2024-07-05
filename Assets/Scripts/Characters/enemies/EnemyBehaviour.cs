@@ -18,7 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Accion();
+        //Accion();
     }
 
     void Update()
@@ -52,7 +52,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else if (enemy.IsTurning)
         {
-            //CambiarDireccion();
+            //CambiarDireccion();   
         }
     }
 
@@ -74,44 +74,21 @@ public class EnemyBehaviour : MonoBehaviour
     void PerseguirJugador()
     {
         enemy.IsAttacking = false;
-        
-        if (jugador.transform.rotation.y == 0)
+        enemy.IsWaiting = false;
+        if (transform.position.x < jugador.transform.position.x)
         {
-            if (transform.position.x > jugador.transform.position.x)
-            {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-                Vector2 direccion = (jugador.position - transform.position).normalized;
-                rb.velocity = direccion * enemy.NormalSpeed;
-                enemy.IsWalking = true;
-            }
-            else if (transform.position.x < jugador.transform.position.x)
-            {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-                Vector2 direccion = (jugador.position - transform.position).normalized;
-                rb.velocity = direccion * enemy.NormalSpeed;
-                enemy.IsWalking = true;
-            }
+            enemy.IsTurning = true;
+            Vector2 direccion = (jugador.position - transform.position).normalized;
+            rb.velocity = direccion * enemy.RunSpeed;
+            enemy.IsWalking = true;
         }
         else
         {
-            if (transform.position.x < jugador.transform.position.x)
-            {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-                Vector2 direccion = (jugador.position - transform.position).normalized;
-                rb.velocity = direccion * enemy.NormalSpeed;
-                enemy.IsWalking = true;
-            }
-            else if (transform.position.x > jugador.transform.position.x)
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                Vector2 direccion = (jugador.position - transform.position).normalized;
-                rb.velocity = direccion * enemy.NormalSpeed;
-                enemy.IsWalking = true;
-            }
-        }    
-        
-
-
+            enemy.IsTurning = false;
+            Vector2 direccion = (jugador.position - transform.position).normalized;
+            rb.velocity = direccion * enemy.RunSpeed;
+            enemy.IsWalking = true;
+        }
     }
 
     void AtacarJugador()
@@ -133,26 +110,12 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Accion()
     {
-        movimiento = Random.Range(1, 4);
-
+        movimiento = Random.Range(1, 3);
         enemy.IsWalking = movimiento == 1;
         enemy.IsWaiting = movimiento == 2;
-        enemy.IsTurning = movimiento == 3;
-
-        if (enemy.IsTurning)
-        {
-            StartCoroutine(TiempoGiro());
-        }
-
         Invoke("Accion", enemyData.ReactionTime);
     }
-
-    IEnumerator TiempoGiro()
-    {
-        yield return new WaitForSeconds(2);
-        enemy.IsTurning = false;
-    }
-    public void Morir()
+    public void Mrir()
     {
         enemy.IsAttacking = false;
         enemy.IsWalking = false;

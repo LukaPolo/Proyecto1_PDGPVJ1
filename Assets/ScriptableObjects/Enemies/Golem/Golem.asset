@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: 0
   weaponList: []
-  detectionRange: 10
+  detectionRange: 30
   reactionTime: 0.8
   waitTime: 1
-  isAlert: 0
+  isAlert: 1

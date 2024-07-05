@@ -19,9 +19,9 @@ MonoBehaviour:
   weapon: 0
   weaponList:
   - {fileID: 11400000, guid: 85cb6ad57f1465e45aca0eafd41c2a55, type: 2}
-  moveSpeed: 4
-  normalSpeed: 4
-  runSpeed: 6
+  moveSpeed: 2
+  normalSpeed: 2
+  runSpeed: 3
   dashSpeed: 10
   dashLength: 0.5
   dashCooldown: 0.6

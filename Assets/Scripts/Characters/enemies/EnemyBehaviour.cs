@@ -13,6 +13,8 @@ public class EnemyBehaviour : MonoBehaviour
     private Vector2 direccionMovimiento;
     [SerializeField] private CharacterData enemy;
     [SerializeField] private EnemyData enemyData;
+    public AudioSource controlSonido;
+    public AudioClip attackSound;
 
 
     void Start()
@@ -96,10 +98,11 @@ public class EnemyBehaviour : MonoBehaviour
         rb.velocity = Vector2.zero;
         enemy.IsAttacking = true;
         enemy.IsWalking = false;
+        if(enemy.IsAttacking && !controlSonido.isPlaying) controlSonido.PlayOneShot(attackSound);
     }
     void CambiarDireccion()
     {
-        // Cambiar la dirección de movimiento a una dirección aleatoria
+        // Cambiar la direcciï¿½n de movimiento a una direcciï¿½n aleatoria
         direccionMovimiento = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         rb.velocity = direccionMovimiento * enemy.MoveSpeed;
     }

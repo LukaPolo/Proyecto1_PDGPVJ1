@@ -49,6 +49,7 @@ public class CharacterData : ScriptableObject{
     public List<WeaponData> WeaponList {get {return weaponList;} set {weaponList = value;}}
     public float MoveSpeed {get {return moveSpeed;} set {moveSpeed = value;}}
     public float NormalSpeed {get {return normalSpeed;} set {normalSpeed = value;}}
+    public float RunSpeed { get { return runSpeed; } set { runSpeed = value; } }
     public float DashSpeed {get {return dashSpeed;} set {dashSpeed = value;}}
     public float DashLength {get {return dashLength;} set {dashLength = value;}}
     public float DashCooldown {get {return dashCooldown;} set {dashCooldown = value;}}

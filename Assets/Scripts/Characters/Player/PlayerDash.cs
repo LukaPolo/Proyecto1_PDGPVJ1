@@ -5,8 +5,12 @@ using UnityEngine;
 public class PlayerDash : MonoBehaviour{
     [SerializeField]private CharacterData player;
 
-    void Start(){
+    void OnEnable(){
         PlayerInput.dash += Dash;
+    }
+
+    void OnDisable(){
+        PlayerInput.dash -= Dash;
     }
 
     void Dash(){

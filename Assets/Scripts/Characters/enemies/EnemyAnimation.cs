@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyAnimation : MonoBehaviour{
     [SerializeField]private CharacterData enemy;
     [SerializeField] private EnemyData enemyData;
-    [SerializeField]private SpriteRenderer sprite;
     [SerializeField]private Animator anim;
 
     void Update(){

@@ -4,29 +4,32 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour{
     [SerializeField]private CharacterData player;
-    private Rigidbody2D rb2d;
-    [SerializeField]private Vector2 moveInput;
+    private Rigidbody2D physics;
 
-    void Start(){
+    void OnEnable(){
+        physics = GetComponent<Rigidbody2D>();
         PlayerInput.direction += Move;
-        rb2d = GetComponent<Rigidbody2D>();
+        PlayerInput.direction += Turn;
     }
 
-    void Move(float xAxis, float yAxis){
-        moveInput.x = xAxis;
-        moveInput.y = yAxis;
-        moveInput.Normalize();
-        rb2d.velocity = moveInput * player.MoveSpeed;
-        if(rb2d.velocity.x != 0 || rb2d.velocity.y != 0){
+    void OnDisable(){
+        PlayerInput.direction -= Move;
+        PlayerInput.direction -= Turn;
+    }
+
+    public void Move(Vector2 moveInput){
+        physics.velocity = moveInput * player.MoveSpeed;
+        if(physics.velocity.x != 0 || physics.velocity.y != 0){
             player.IsWalking = true;
         }else{
             player.IsWalking = false;
         }
-        if(xAxis < 0){
-            player.IsTurning = true;
-        }
-        if(xAxis > 0){
-            player.IsTurning = false;
-        }
     }
+
+    public void Turn(Vector2 moveInput){
+        if(moveInput.x < 0) player.IsTurning = true;
+        if(moveInput.x > 0) player.IsTurning = false;
+    }
+
+
 }

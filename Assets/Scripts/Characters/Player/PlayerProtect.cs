@@ -6,9 +6,14 @@ public class PlayerProtect : MonoBehaviour{
     [SerializeField]private CharacterData player;
     [SerializeField]private GameObject shield;
 
-    void Start(){
+    void OnEnable(){
         PlayerInput.protect += EnableShield;
         PlayerInput.protectRelease += DisableShield;
+    }
+
+    void OnDisable(){
+        PlayerInput.protect -= EnableShield;
+        PlayerInput.protectRelease -= DisableShield;
     }
 
     void EnableShield(){

@@ -10,9 +10,13 @@ public class PlayerAttack : MonoBehaviour{
     [SerializeField]private float finish;
     [SerializeField]private float attackProgress;
 
-    void Start(){
+    void OnEnable(){
         PlayerInput.attack += Attack;
         attackProgress = 0f;
+    }
+
+    void OnDisable(){
+        PlayerInput.attack -= Attack;
     }
 
     void Attack(){

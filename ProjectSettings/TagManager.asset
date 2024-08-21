@@ -9,15 +9,16 @@ TagManager:
   - PlayerWeaponHitbox
   - PlayerSpawner
   - Character
+  - SoundManager
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - player
+  - Player
   - Water
   - UI
   - Mapa
-  - Enemigo
+  - Enemy
   - MapaObjetos
   - PlayerWeapon
   - 
